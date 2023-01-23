@@ -1,19 +1,22 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-cobstoolsurveyspulse-dev-200825-authRole",
-      "UnauthRoleArn": "arn:aws:iam::050380431651:role/amplify-cobstoolsurveyspulse-dev-200825-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::050380431651:role/amplify-cobstoolsurveyspulse-dev-200825-authRole",
+      "AuthRoleName": "amplify-cobstoolsurveyspulse-dev-225924-authRole",
+      "UnauthRoleArn": "arn:aws:iam::050380431651:role/amplify-cobstoolsurveyspulse-dev-225924-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::050380431651:role/amplify-cobstoolsurveyspulse-dev-225924-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-cobstoolsurveyspulse-dev-200825-deployment",
-      "UnauthRoleName": "amplify-cobstoolsurveyspulse-dev-200825-unauthRole",
-      "StackName": "amplify-cobstoolsurveyspulse-dev-200825",
-      "StackId": "arn:aws:cloudformation:us-west-2:050380431651:stack/amplify-cobstoolsurveyspulse-dev-200825/b2f48f80-9b59-11ed-96a4-0275739921cd",
-      "AmplifyAppId": "d9hbbqnvkvh1q"
+      "DeploymentBucketName": "amplify-cobstoolsurveyspulse-dev-225924-deployment",
+      "UnauthRoleName": "amplify-cobstoolsurveyspulse-dev-225924-unauthRole",
+      "StackName": "amplify-cobstoolsurveyspulse-dev-225924",
+      "StackId": "arn:aws:cloudformation:us-west-2:050380431651:stack/amplify-cobstoolsurveyspulse-dev-225924/96137260-9b71-11ed-9053-0a10abd8bf21",
+      "AmplifyAppId": "d2z7h9t7m3t599"
     },
     "categories": {
       "hosting": {
-        "S3AndCloudFront": {}
+        "amplifyhosting": {
+          "appId": "d2z7h9t7m3t599",
+          "type": "manual"
+        }
       }
     }
   }
