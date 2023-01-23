@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cobstoolsurveyspulse-dev-200825-authRole",
+      "UnauthRoleArn": "arn:aws:iam::050380431651:role/amplify-cobstoolsurveyspulse-dev-200825-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::050380431651:role/amplify-cobstoolsurveyspulse-dev-200825-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-cobstoolsurveyspulse-dev-200825-deployment",
+      "UnauthRoleName": "amplify-cobstoolsurveyspulse-dev-200825-unauthRole",
+      "StackName": "amplify-cobstoolsurveyspulse-dev-200825",
+      "StackId": "arn:aws:cloudformation:us-west-2:050380431651:stack/amplify-cobstoolsurveyspulse-dev-200825/b2f48f80-9b59-11ed-96a4-0275739921cd",
+      "AmplifyAppId": "d9hbbqnvkvh1q"
+    }
+  }
+}
