@@ -10,6 +10,11 @@
       "StackName": "amplify-cobstoolsurveyspulse-dev-200825",
       "StackId": "arn:aws:cloudformation:us-west-2:050380431651:stack/amplify-cobstoolsurveyspulse-dev-200825/b2f48f80-9b59-11ed-96a4-0275739921cd",
       "AmplifyAppId": "d9hbbqnvkvh1q"
+    },
+    "categories": {
+      "hosting": {
+        "S3AndCloudFront": {}
+      }
     }
   }
 }
