@@ -116,6 +116,7 @@ export default function PulseSurvey(props) {
         }
         await API.graphql(graphqlOperation(createPulseSurveyResults, {input: data} ));
         swal("Thank you!", "Your feedback has been submitted!","success");
+        window.location.reload(false);
       }}
       {...getOverrideProps(overrides, "PulseSurvey")}
       {...rest}
