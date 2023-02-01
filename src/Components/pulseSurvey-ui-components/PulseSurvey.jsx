@@ -6,8 +6,11 @@
 
 /* eslint-disable */
 import * as React from "react";
+import swal from 'sweetalert';
+import {render} from 'react-dom';
 import Rating from '@mui/material/Rating';
 import { createPulseSurveyResults } from '../../graphql/mutations'
+import { ThankYou } from "../../Components/ThankYouComponent/ThankYou"
 import {
   Button,
   Flex,
@@ -15,6 +18,7 @@ import {
   Heading,
   TextAreaField,
   TextField,
+  Alert,
 } from "@aws-amplify/ui-react";
 import { Amplify, Auth, API, graphqlOperation } from "aws-amplify";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
@@ -111,7 +115,7 @@ export default function PulseSurvey(props) {
           stop_do: modelFields["Field1"],
         }
         await API.graphql(graphqlOperation(createPulseSurveyResults, {input: data} ));
-          
+        swal("Thank you!", "Your feedback has been submitted!","success");
       }}
       {...getOverrideProps(overrides, "PulseSurvey")}
       {...rest}
