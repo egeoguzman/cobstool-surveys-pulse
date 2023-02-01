@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "cobstoolsurveyspulse",
+    "serviceName": "AppSync",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 120,
+      "apiKeyExpirationDate": "2023-06-01T11:17:43.554Z",
+      "keyDescription": "cobstool pulse2ddb api"
+    }
+  }
+}

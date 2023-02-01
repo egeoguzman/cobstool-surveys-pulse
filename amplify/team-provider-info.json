@@ -17,6 +17,9 @@
           "appId": "d2z7h9t7m3t599",
           "type": "manual"
         }
+      },
+      "api": {
+        "cobstoolsurveyspulse": {}
       }
     }
   }
