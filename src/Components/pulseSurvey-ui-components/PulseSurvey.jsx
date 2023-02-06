@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import {render} from 'react-dom';
 import Rating from '@mui/material/Rating';
 import { createPulseSurveyResults } from '../../graphql/mutations'
@@ -32,12 +32,14 @@ export default function PulseSurvey(props) {
     Field0: "",
     Field3: "",
     Field4: 0,
+    Field5: "",
   };
   const [Field2, setField2] = React.useState(initialValues.Field2);
   const [Field1, setField1] = React.useState(initialValues.Field1);
   const [Field0, setField0] = React.useState(initialValues.Field0);
   const [Field3, setField3] = React.useState(initialValues.Field3);
   const [Field4, setField4] = React.useState(initialValues.Field4);
+  const [Field5, setField5] = React.useState(initialValues.Field5);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setField2(initialValues.Field2);
@@ -45,6 +47,7 @@ export default function PulseSurvey(props) {
     setField0(initialValues.Field0);
     setField3(initialValues.Field3);
     setField3(initialValues.Field4);
+    setField3(initialValues.Field5);
     setErrors({});
   };
   const [value, setValue] = React.useState(0);
@@ -54,6 +57,7 @@ export default function PulseSurvey(props) {
     Field0: [],
     Field3: [{ type: "Required" }, { type: "Email" }],
     Field4: [{ type: "Required" }],
+    Field5: [{ type: "Required" }, { type: "Email" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -85,6 +89,7 @@ export default function PulseSurvey(props) {
           Field0,
           Field3,
           Field4,
+          Field5,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -108,25 +113,32 @@ export default function PulseSurvey(props) {
         console.log(modelFields)
         const data = {
 
-          email: modelFields["Field3"],
+          customer_mail: modelFields["Field3"],
           rating: modelFields["Field4"],
           start_do: modelFields["Field2"],
           cont_do: modelFields["Field0"],
           stop_do: modelFields["Field1"],
+          sa_mail: modelFields["Field5"],
         }
         await API.graphql(graphqlOperation(createPulseSurveyResults, {input: data} ));
-        swal("Thank you!", "Your feedback has been submitted!","success");
+        Swal.fire({
+          position: 'top',
+          icon: 'success',
+          title: 'Thank you! \n Your feedback has been submitted!',
+          showConfirmButton: false,
+          timer: 1500
+        });
         window.location.reload(false);
       }}
       {...getOverrideProps(overrides, "PulseSurvey")}
       {...rest}
     >
       <Heading
-        children="Pulse Survey"
+        children="On-going Feedback Survey"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <TextField
-        label="Email"
+        label="Customer Email"
         
         onChange={(e) => {
           let { value } = e.target;
@@ -137,6 +149,7 @@ export default function PulseSurvey(props) {
               Field0,
               Field3: value,
               Field4,
+              Field5,
             };
             const result = onChange(modelFields);
             value = result?.Field3 ?? value;
@@ -150,6 +163,33 @@ export default function PulseSurvey(props) {
         errorMessage={errors.Field3?.errorMessage}
         hasError={errors.Field3?.hasError}
         {...getOverrideProps(overrides, "Field3")}
+      ></TextField>
+      <TextField
+        label="SA Email"
+        
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Field2,
+              Field1,
+              Field0,
+              Field3,
+              Field4,
+              Field5: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field5 ?? value;
+          }
+          if (errors.Field5?.hasError) {
+            runValidationTasks("Field5", value);
+          }
+          setField5(value);
+        }}
+        onBlur={() => runValidationTasks("Field5", Field5)}
+        errorMessage={errors.Field5?.errorMessage}
+        hasError={errors.Field5?.hasError}
+        {...getOverrideProps(overrides, "Field5")}
       ></TextField>
       <Rating
         name="pulse-rating"
@@ -166,6 +206,7 @@ export default function PulseSurvey(props) {
               Field0,
               Field3,
               Field4: newValue ,
+              Field5,
             };
             const result = onChange(modelFields);
             value = result?.Field4 ?? newValue;
@@ -192,6 +233,7 @@ export default function PulseSurvey(props) {
               Field0,
               Field3,
               Field4,
+              Field5,
             };
             const result = onChange(modelFields);
             value = result?.Field2 ?? value;
@@ -217,6 +259,7 @@ export default function PulseSurvey(props) {
               Field0,
               Field3,
               Field4,
+              Field5,
             };
             const result = onChange(modelFields);
             value = result?.Field1 ?? value;
@@ -242,6 +285,7 @@ export default function PulseSurvey(props) {
               Field0: value,
               Field3,
               Field4,
+              Field5,
             };
             const result = onChange(modelFields);
             value = result?.Field0 ?? value;

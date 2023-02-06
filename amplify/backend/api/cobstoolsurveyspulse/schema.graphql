@@ -4,9 +4,10 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type PulseSurveyResults @model {
   id: ID!
-  email: String!
+  customer_mail: String!
   rating: Float!
   start_do: String!
   cont_do: String!
-  stop_do: String!  
+  stop_do: String!
+  sa_mail: String!
 }

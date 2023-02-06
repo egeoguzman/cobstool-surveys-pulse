@@ -5,11 +5,12 @@ export const getPulseSurveyResults = /* GraphQL */ `
   query GetPulseSurveyResults($id: ID!) {
     getPulseSurveyResults(id: $id) {
       id
-      email
+      customer_mail
       rating
       start_do
       cont_do
       stop_do
+      sa_mail
       createdAt
       updatedAt
     }
@@ -28,11 +29,12 @@ export const listPulseSurveyResults = /* GraphQL */ `
     ) {
       items {
         id
-        email
+        customer_mail
         rating
         start_do
         cont_do
         stop_do
+        sa_mail
         createdAt
         updatedAt
       }

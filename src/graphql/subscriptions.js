@@ -7,11 +7,12 @@ export const onCreatePulseSurveyResults = /* GraphQL */ `
   ) {
     onCreatePulseSurveyResults(filter: $filter) {
       id
-      email
+      customer_mail
       rating
       start_do
       cont_do
       stop_do
+      sa_mail
       createdAt
       updatedAt
     }
@@ -23,11 +24,12 @@ export const onUpdatePulseSurveyResults = /* GraphQL */ `
   ) {
     onUpdatePulseSurveyResults(filter: $filter) {
       id
-      email
+      customer_mail
       rating
       start_do
       cont_do
       stop_do
+      sa_mail
       createdAt
       updatedAt
     }
@@ -39,11 +41,12 @@ export const onDeletePulseSurveyResults = /* GraphQL */ `
   ) {
     onDeletePulseSurveyResults(filter: $filter) {
       id
-      email
+      customer_mail
       rating
       start_do
       cont_do
       stop_do
+      sa_mail
       createdAt
       updatedAt
     }
