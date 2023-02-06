@@ -128,7 +128,7 @@ export default function PulseSurvey(props) {
           showConfirmButton: false,
           timer: 900000
         });
-        window.location.reload(false);
+        //window.location.reload(false);
       }}
       {...getOverrideProps(overrides, "PulseSurvey")}
       {...rest}
