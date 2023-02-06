@@ -126,7 +126,7 @@ export default function PulseSurvey(props) {
           icon: 'success',
           title: 'Thank you! \n Your feedback has been submitted!',
           showConfirmButton: false,
-          timer: 1500
+          timer: 900000
         });
         window.location.reload(false);
       }}
