@@ -191,6 +191,85 @@ export default function PulseSurvey(props) {
         hasError={errors.Field5?.hasError}
         {...getOverrideProps(overrides, "Field5")}
       ></TextField>
+      <TextAreaField
+        label="What can we do to improve the on-going engagement?"
+        
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Field2: value,
+              Field1,
+              Field0,
+              Field3,
+              Field4,
+              Field5,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field2 ?? value;
+          }
+          if (errors.Field2?.hasError) {
+            runValidationTasks("Field2", value);
+          }
+          setField2(value);
+        }}
+        onBlur={() => runValidationTasks("Field2", Field2)}
+        errorMessage={errors.Field2?.errorMessage}
+        hasError={errors.Field2?.hasError}
+        {...getOverrideProps(overrides, "Field2")}
+      ></TextAreaField>
+      <TextAreaField
+        label="What should we change about the on-going engagement?"
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Field2,
+              Field1: value,
+              Field0,
+              Field3,
+              Field4,
+              Field5,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field1 ?? value;
+          }
+          if (errors.Field1?.hasError) {
+            runValidationTasks("Field1", value);
+          }
+          setField1(value);
+        }}
+        onBlur={() => runValidationTasks("Field1", Field1)}
+        errorMessage={errors.Field1?.errorMessage}
+        hasError={errors.Field1?.hasError}
+        {...getOverrideProps(overrides, "Field1")}
+      ></TextAreaField>
+      <TextAreaField
+        label="What do you particularly like about the on-going engagement?"
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Field2,
+              Field1,
+              Field0: value,
+              Field3,
+              Field4,
+              Field5,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field0 ?? value;
+          }
+          if (errors.Field0?.hasError) {
+            runValidationTasks("Field0", value);
+          }
+          setField0(value);
+        }}
+        onBlur={() => runValidationTasks("Field0", Field0)}
+        errorMessage={errors.Field0?.errorMessage}
+        hasError={errors.Field0?.hasError}
+        {...getOverrideProps(overrides, "Field0")}
+      ></TextAreaField>
       <Rating
         name="pulse-rating"
         size="large"
@@ -221,85 +300,6 @@ export default function PulseSurvey(props) {
         hasError={errors.Field4?.hasError}
         {...getOverrideProps(overrides, "Field4")}
       />
-      <TextAreaField
-        label="Start"
-        
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              Field2: value,
-              Field1,
-              Field0,
-              Field3,
-              Field4,
-              Field5,
-            };
-            const result = onChange(modelFields);
-            value = result?.Field2 ?? value;
-          }
-          if (errors.Field2?.hasError) {
-            runValidationTasks("Field2", value);
-          }
-          setField2(value);
-        }}
-        onBlur={() => runValidationTasks("Field2", Field2)}
-        errorMessage={errors.Field2?.errorMessage}
-        hasError={errors.Field2?.hasError}
-        {...getOverrideProps(overrides, "Field2")}
-      ></TextAreaField>
-      <TextAreaField
-        label="Stop"
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              Field2,
-              Field1: value,
-              Field0,
-              Field3,
-              Field4,
-              Field5,
-            };
-            const result = onChange(modelFields);
-            value = result?.Field1 ?? value;
-          }
-          if (errors.Field1?.hasError) {
-            runValidationTasks("Field1", value);
-          }
-          setField1(value);
-        }}
-        onBlur={() => runValidationTasks("Field1", Field1)}
-        errorMessage={errors.Field1?.errorMessage}
-        hasError={errors.Field1?.hasError}
-        {...getOverrideProps(overrides, "Field1")}
-      ></TextAreaField>
-      <TextAreaField
-        label="Continue"
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              Field2,
-              Field1,
-              Field0: value,
-              Field3,
-              Field4,
-              Field5,
-            };
-            const result = onChange(modelFields);
-            value = result?.Field0 ?? value;
-          }
-          if (errors.Field0?.hasError) {
-            runValidationTasks("Field0", value);
-          }
-          setField0(value);
-        }}
-        onBlur={() => runValidationTasks("Field0", Field0)}
-        errorMessage={errors.Field0?.errorMessage}
-        hasError={errors.Field0?.hasError}
-        {...getOverrideProps(overrides, "Field0")}
-      ></TextAreaField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
