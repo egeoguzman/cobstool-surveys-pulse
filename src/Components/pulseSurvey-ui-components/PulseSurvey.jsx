@@ -135,7 +135,7 @@ export default function PulseSurvey(props) {
       {...rest}
     >
       <Heading
-        children="On-going Event Feedback Survey"
+        children="Ongoing Engagement Feedback"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <TextField
