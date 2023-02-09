@@ -9,6 +9,7 @@ import * as React from "react";
 import Swal from 'sweetalert2';
 import {render} from 'react-dom';
 import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 import { createPulseSurveyResults } from '../../graphql/mutations'
 import { ThankYou } from "../../Components/ThankYouComponent/ThankYou"
 import {
@@ -270,6 +271,7 @@ export default function PulseSurvey(props) {
         hasError={errors.Field0?.hasError}
         {...getOverrideProps(overrides, "Field0")}
       ></TextAreaField>
+      <Typography component="legend">How satisfied are you with the on-going engagement?</Typography>
       <Rating
         name="pulse-rating"
         size="large"
