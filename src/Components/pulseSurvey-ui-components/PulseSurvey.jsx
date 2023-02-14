@@ -76,6 +76,10 @@ export default function PulseSurvey(props) {
     setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
     return validationResponse;
   };
+  let searchParams = new URLSearchParams(window.location.search);
+  const sa_email = searchParams.get('sa_email');;
+  const customer_email = searchParams.get('customer_email');
+  
   return (
     <Grid
       as="form"
@@ -111,15 +115,14 @@ export default function PulseSurvey(props) {
         if (validationResponses.some((r) => r.hasError)) {
           return;
         }
-        console.log(modelFields)
         const data = {
 
-          customer_mail: modelFields["Field3"],
+          customer_mail: customer_email,
           rating: modelFields["Field4"],
           start_do: modelFields["Field2"],
           cont_do: modelFields["Field0"],
           stop_do: modelFields["Field1"],
-          sa_mail: modelFields["Field5"],
+          sa_mail: sa_email,
         }
         await API.graphql(graphqlOperation(createPulseSurveyResults, {input: data} ));
         Swal.fire({
@@ -140,7 +143,8 @@ export default function PulseSurvey(props) {
       ></Heading>
       <TextField
         label="Customer Email"
-        
+        disabled
+        placeholder={customer_email}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -148,7 +152,7 @@ export default function PulseSurvey(props) {
               Field2,
               Field1,
               Field0,
-              Field3: value,
+              Field3: customer_email,
               Field4,
               Field5,
             };
@@ -167,7 +171,8 @@ export default function PulseSurvey(props) {
       ></TextField>
       <TextField
         label="SA Email"
-        
+        disabled
+        placeholder={sa_email}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -177,7 +182,7 @@ export default function PulseSurvey(props) {
               Field0,
               Field3,
               Field4,
-              Field5: value,
+              Field5: sa_email,
             };
             const result = onChange(modelFields);
             value = result?.Field5 ?? value;
