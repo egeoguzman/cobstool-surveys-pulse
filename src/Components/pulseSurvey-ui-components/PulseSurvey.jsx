@@ -143,7 +143,7 @@ export default function PulseSurvey(props) {
       ></Heading>
       <TextField
         label="Customer Email"
-        disabled
+        //disabled
         placeholder={customer_email}
         onChange={(e) => {
           let { value } = e.target;
