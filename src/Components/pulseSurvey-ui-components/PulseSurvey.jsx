@@ -144,7 +144,7 @@ export default function PulseSurvey(props) {
       <TextField
         label="Customer Email"
         //disabled
-        placeholder={customer_email}
+        defaultValue={customer_email}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -172,7 +172,7 @@ export default function PulseSurvey(props) {
       <TextField
         label="SA Email"
         disabled
-        placeholder={sa_email}
+        defaultValue={sa_email}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
