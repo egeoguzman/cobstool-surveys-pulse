@@ -27,14 +27,31 @@ import { fetchByPath, validateField } from "./utils";
 export default function PulseSurvey(props) {
   const { onSubmit, onCancel, onValidate, onChange, overrides, ...rest } =
     props;
-  const initialValues = {
+
+  let searchParams = new URLSearchParams(window.location.search);
+  const sa_email = searchParams.get('sa_email');;
+  const customer_email = searchParams.get('customer_email');
+  let isDisabled_value = false;
+  let initialValues = {
     Field2: "",
     Field1: "",
     Field0: "",
     Field3: "",
     Field4: 0,
-    Field5: "",
+    Field5: {sa_email},
   };
+  if (customer_email != null){
+    isDisabled_value=true;
+    {initialValues = {
+      Field2: "",
+      Field1: "",
+      Field0: "",
+      Field3: {customer_email},
+      Field4: 0,
+      Field5: {sa_email},
+    };}
+  }
+
   const [Field2, setField2] = React.useState(initialValues.Field2);
   const [Field1, setField1] = React.useState(initialValues.Field1);
   const [Field0, setField0] = React.useState(initialValues.Field0);
@@ -56,9 +73,9 @@ export default function PulseSurvey(props) {
     Field2: [],
     Field1: [],
     Field0: [],
-    Field3: [{ type: "Required" }, { type: "Email" }],
+    Field3: [{ type: "Required" }],
     Field4: [{ type: "Required" }],
-    Field5: [{ type: "Required" }, { type: "Email" }],
+    Field5: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -76,9 +93,7 @@ export default function PulseSurvey(props) {
     setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
     return validationResponse;
   };
-  let searchParams = new URLSearchParams(window.location.search);
-  const sa_email = searchParams.get('sa_email');;
-  const customer_email = searchParams.get('customer_email');
+
   
   return (
     <Grid
@@ -117,12 +132,12 @@ export default function PulseSurvey(props) {
         }
         const data = {
 
-          customer_mail: customer_email,
+          customer_mail: modelFields["Field3"],
           rating: modelFields["Field4"],
           start_do: modelFields["Field2"],
           cont_do: modelFields["Field0"],
           stop_do: modelFields["Field1"],
-          sa_mail: sa_email,
+          sa_mail: modelFields["Field5"],
         }
         await API.graphql(graphqlOperation(createPulseSurveyResults, {input: data} ));
         Swal.fire({
@@ -143,16 +158,16 @@ export default function PulseSurvey(props) {
       ></Heading>
       <TextField
         label="Customer Email"
-        //disabled
+        isDisabled = {isDisabled_value}
         defaultValue={customer_email}
         onChange={(e) => {
           let { value } = e.target;
-          if (onChange) {
+          if (onChange || e.target.disabled!=false) {           
             const modelFields = {
               Field2,
               Field1,
               Field0,
-              Field3: customer_email,
+              Field3: value,
               Field4,
               Field5,
             };
@@ -173,16 +188,17 @@ export default function PulseSurvey(props) {
         label="SA Email"
         disabled
         defaultValue={sa_email}
+        value={sa_email}
         onChange={(e) => {
           let { value } = e.target;
-          if (onChange) {
+          if (onChange || e.target.disabled) {
             const modelFields = {
               Field2,
               Field1,
               Field0,
               Field3,
               Field4,
-              Field5: sa_email,
+              Field5: value,
             };
             const result = onChange(modelFields);
             value = result?.Field5 ?? value;
