@@ -74,9 +74,9 @@ export default function PulseSurvey(props) {
     Field2: [],
     Field1: [],
     Field0: [],
-    Field3: [{ type: "Required" }],
+    Field3: [{ type: "Required" }, { type: "Email" }],
     Field4: [{ type: "Required" }],
-    Field5: [{ type: "Required" }],
+    Field5: [{ type: "Required" }, { type: "Email" }],
   };
   const runValidationTasks = async (
     fieldName,
