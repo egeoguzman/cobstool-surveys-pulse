@@ -31,6 +31,7 @@ export default function PulseSurvey(props) {
   let searchParams = new URLSearchParams(window.location.search);
   const sa_email = searchParams.get('sa_email');;
   const customer_email = searchParams.get('customer_email');
+
   let isDisabled_value = false;
   let initialValues = {
     Field2: "",
@@ -38,7 +39,7 @@ export default function PulseSurvey(props) {
     Field0: "",
     Field3: "",
     Field4: 0,
-    Field5: {sa_email},
+    Field5: sa_email,
   };
   if (customer_email != null){
     isDisabled_value=true;
@@ -48,7 +49,7 @@ export default function PulseSurvey(props) {
       Field0: "",
       Field3: {customer_email},
       Field4: 0,
-      Field5: {sa_email},
+      Field5: sa_email,
     };}
   }
 
