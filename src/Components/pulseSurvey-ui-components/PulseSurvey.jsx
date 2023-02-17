@@ -47,7 +47,7 @@ export default function PulseSurvey(props) {
       Field2: "",
       Field1: "",
       Field0: "",
-      Field3: {customer_email},
+      Field3: customer_email,
       Field4: 0,
       Field5: sa_email,
     };}
