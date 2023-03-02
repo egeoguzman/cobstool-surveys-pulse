@@ -37,7 +37,7 @@ export default function PulseSurvey(props) {
     Field2: "",
     Field1: "",
     Field0: "",
-    Field3: "",
+    Field3: " ",
     Field4: 0,
     Field5: sa_email,
   };
@@ -74,7 +74,7 @@ export default function PulseSurvey(props) {
     Field2: [],
     Field1: [],
     Field0: [],
-    Field3: [{ type: "Required" }, { type: "Email" }],
+    Field3: [],
     Field4: [{ type: "Required" }],
     Field5: [{ type: "Required" }, { type: "Email" }],
   };
